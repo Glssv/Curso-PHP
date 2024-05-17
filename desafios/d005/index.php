@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-bt">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Formularios em php</title>
+    <title>Document</title>
 </head>
 
 <body>
-    <header>
-        <h1>Escolha um numero</h1>
-    </header>
-    <section>
-        <form action="cad.php" method="get">
-            <label for="numero">Escolha um numero</label>
-            <input type="number" name="numero" id="inumero" required>
-            <input type="submit" value="Enviar">
+    <main>
+        <?php 
+        $div1 = $_GET['d1'] ?? 0;
+        $div2 = $_GET['d2'] ?? 1;
+        
+        ?>
+        <h1>Somador de valores</h1>
+        <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
+            <label for="d1">Dividendo</label>
+            <input type="number" name="d1" id="id1" required value="<?=$div1?>">
+            <label for="v2">Divisor</label>
+            <input type="number" name="d2" id="id2" required value="<?=$div2?>">
+            <input type="submit" value="Analisar">
         </form>
+    </main>
+
+    <section id="resultado">
+        <h2>Resultado da soma </h2>
+        <?php 
+        $quo = intdiv($div1, $div2);
+        $resto = $div1 % $div2;
+        ?>
+    </section>
+    <section>
+        <table class="divisão">
+            <tr>
+                <td><?=$div1?></td>
+                <td><?=$div2?></td>
+            </tr>
+            <tr>
+                <td><?=$resto?></td>
+                <td><?=$quo?></td>
+            </tr>
+        </table>
     </section>
 </body>
 
